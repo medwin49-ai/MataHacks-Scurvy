@@ -27,7 +27,7 @@ def LiveLocalTime():
     while terminateLoop == False:
         now = datetime.now()
         current_time = now.strftime("%H:%M")
-        print("\r" + current_time + " Press enter to exit" , end = "")
+        print("\r" + current_time + " Press enter to exit Meditation" , end = "")
         time.sleep(1)
 
 
