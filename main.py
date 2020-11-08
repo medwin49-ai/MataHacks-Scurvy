@@ -1,13 +1,21 @@
+import oClock
+import threading
 
-from oClock import *
+def clocthreadfunc():
+    oClock.LiveLocalTime()
+backgroundThread = threading.Thread(group = None, target = clocthreadfunc , name="clockthread" , daemon= True )
 
 
-targetTime = 0
-Zone = 0
-defaultInterval = 10
-
-currentLocalTime()
+oClock.currentLocalTime()
 print("\n" + "Input how many seconds")
-theClock()
+userInput = input(">> ")
+oClock.theClock(abs(int(userInput)))
 print("\nPlease Mediate :)")
-LiveLocalTime()
+backgroundThread.start()
+while True:
+    userchoice = input()
+    oClock.terminateLoop = True
+    break
+backgroundThread.join()
+
+print("Thread has exit")
